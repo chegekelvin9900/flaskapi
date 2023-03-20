@@ -55,9 +55,9 @@ def predict():
                        'Tomato__Target_Spot',
                        'Tomato__Tomato_YellowLeaf__Curl_Virus',
                        'Tomato__Tomato_mosaic_virus']
-        #file = request.files['image']
+        file = request.files['image']
 
-        img = Image.open("../new.JPG")
+        img = Image.open("../OIP.jpg")
 
         processed_image = process_image(img)
 
@@ -66,10 +66,10 @@ def predict():
         confidence = round(100 * (np.max(predictions[0])), 2)
 
         response = predictions
-        print(predicted_class)
-        print(confidence)
+        print(response)
+        #print(confidence)
 
-        return jsonify(predicted_class)
+        return jsonify(predicted_class,confidence)
 
 
 if __name__ == "__main__":
